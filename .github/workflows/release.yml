@@ -1,17 +1,16 @@
-name: CI
+name: Release
 on:
   push:
     branches:
       - "main"
-  pull_request:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
-  ci:
-    name: CI
+  release:
+    name: Release Packages
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
